@@ -53,7 +53,7 @@ export const libraryTooltip = hoverTooltip((view, pos) => {
             toolTip.innerHTML = `
             <div class="require-tooltip">
                 <h2 class="title"><strong>${name ? name : ''}</strong>@${version === 'latest' ? version : formatVersion(version)}</h2>
-                🔗 <a href=${match[1]} target="_blank">${match[1]}</a><br>
+                📖 <a href=${`https://npmjs.org/package/${name}`} target="_blank">${`https://npmjs.org/package/${name}`}</a><br>
                 ${name ? 'Loading description...' : ''}
             </div>
             `
@@ -66,7 +66,7 @@ export const libraryTooltip = hoverTooltip((view, pos) => {
                             toolTip.innerHTML = `
                         <div class="require-tooltip">
                             <h2 class="title"><strong>${name ? name : ''}</strong>@${version === 'latest' ? version : formatVersion(version)}</h2>
-                            🔗 <a href=${match[1]} target="_blank">${match[1]}</a><br>
+                            📖 <a href=${`https://npmjs.org/package/${name}`} target="_blank">${`https://npmjs.org/package/${name}`}</a><br>
                             🧑‍💻 <span>${response['versions'][formatVersion(response['dist-tags']['latest'])]['_npmUser']['name']}</span><br>
                             <br>
                             <p>${response.description}</p>
@@ -77,7 +77,7 @@ export const libraryTooltip = hoverTooltip((view, pos) => {
                             toolTip.innerHTML = `
                         <div class="require-tooltip">
                             <h2 class="title"><strong>${name ? name : ''}</strong>@${version === 'latest' ? version : formatVersion(version)}</h2>
-                            🔗 <a href=${match[1]} target="_blank">${match[1]}</a><br>
+                            📖 <a href=${`https://npmjs.org/package/${name}`} target="_blank">${`https://npmjs.org/package/${name}`}</a><br>
                             <span>⚠️ Error when loading the description</span>
                         </div>
                         `
@@ -89,7 +89,7 @@ export const libraryTooltip = hoverTooltip((view, pos) => {
                             toolTip.innerHTML = `
                         <div class="require-tooltip">
                             <h2 class="title"><strong>${name ? name : ''}</strong>@${version === 'latest' ? version : formatVersion(version)}</h2>
-                            🔗 <a href=${match[1]} target="_blank">${match[1]}</a><br>
+                            📖 <a href=${`https://npmjs.org/package/${name}`} target="_blank">${`https://npmjs.org/package/${name}`}</a><br>
                             🧑‍💻 <span>${response['versions'][formatVersion(version)]['_npmUser']['name']}</span><br>
                             <br>
                             <p>${response.description}</p>
@@ -100,7 +100,7 @@ export const libraryTooltip = hoverTooltip((view, pos) => {
                             toolTip.innerHTML = `
                         <div class="require-tooltip">
                             <h2 class="title"><strong>${name ? name : ''}</strong>@${version === 'latest' ? version : formatVersion(version)}</h2>
-                            🔗 <a href=${match[1]} target="_blank">${match[1]}</a><br>
+                            📖 <a href=${`https://npmjs.org/package/${name}`} target="_blank">${`https://npmjs.org/package/${name}`}</a><br>
                             <span>⚠️ Error when loading the description</span>
                         </div>
                         `
