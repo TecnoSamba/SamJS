@@ -64,7 +64,7 @@ function App() {
       'background-color': '#09090b',
       padding: '5px',
       'font-family': 'Fira Code',
-      width: '300px',
+      width: 'auto',
       height: '200px',
       'overflow': 'auto',
       'scrollbar-width': 'none',
@@ -114,7 +114,7 @@ function App() {
       'background-color': 'white',
       padding: '5px',
       'font-family': 'Fira Code',
-      width: '300px',
+      width: 'auto',
       height: '200px',
       'overflow': 'auto',
       'scrollbar-width': 'none',
@@ -131,7 +131,7 @@ function App() {
   const [log, setLog] = useState([])
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
   const [editorTheme, setEditorTheme] = useState(theme === 'dark' ? dracula : githubLight)
-  const [stylesTheme, setStylesTheme] = useState(theme === 'dark' ? EditorView.theme(darkTheme) : EditorView.theme(lightTheme))
+  const [stylesTheme] = useState(theme === 'dark' ? EditorView.theme(darkTheme) : EditorView.theme(lightTheme))
   const [copyToolTip, setCopyToolTip] = useState('Copy shareable link')
   const [packages, setPackages] = useState([])
   const [dialogOpen, setDialogOpen] = useState(false)
