@@ -14,6 +14,8 @@ import Auth from './components/Auth'
 import Save from './components/Save'
 import { libraryTooltip } from './components/libraryTooltip'
 import { commonStyles } from './commonStyles'
+import { driver } from "driver.js"
+import "driver.js/dist/driver.css"
 
 function App() {
 
@@ -140,6 +142,30 @@ function App() {
   const themeCompartment = useRef(new Compartment).current
   const stylesCompartment = useRef(new Compartment).current
   const isSharedRef = useRef(isShared)
+  const [hasTakenTour] = useState(localStorage.getItem('hasTakenTour') == 'true' || false)
+
+  const mainPageDriver = driver({
+    showProgress: true,
+    showButtons: true,
+    popoverClass: 'tour-dialog',
+    steps: [
+      { element: '#root', popover: { title: '👋 Welcome to SamJS!', description: "SamJS is a Open Source web app to test JavaScript code in a utility-full environment. But before you start to code, let's take a look at the interface!" } },
+      { element: '#editor', popover: { title: '✏️ The editor', description: "This is the editor, write your code here to run it. It is fully charged with features as syntax highlighting, contextual autocomplete and much more!" } },
+      { element: '#log', popover: { title: '📋 The log area', description: "In the log area you can visualize the errors of your program, as well as any log that it could generate. SamJS supports all kinds of `console.` methods (log, info, warn, error and clear)." } },
+      { element: '#theme', popover: { title: '🌙 The theme picker', description: "Click this button to change between dark and light themes. By default, and for not burning your eyes 🤣, the dark theme is selected." } },
+      { element: '#share', popover: { title: '📨 The share button', description: "Clicking this button will automatically copy to your clipboard a sharable SamJS link. Feel free to send it to your friends to presume of your code!" } },
+      { element: '#packageSearch', popover: { title: '📦 The package search', description: "Open a dialog in which you can search any npm package and instantly import it to the editor." } },
+      { element: 'button[component="SignInButton"]', popover: { title: '🔑 The log in button', description: "Either login or create an account to access to your code snippets or create new ones." } },
+      { element: '#codeSnippets', popover: { title: '💾 Code Snippets', description: "A code snippet is a saved and private portion of code that can be saved to your SamJS account to use anywhere you want as long as you are logged in. Here you can manage and create your code snippets." } },
+    ],
+    onDestroyed: () => window.location.reload()
+  })
+
+  if (!hasTakenTour) {
+    mainPageDriver.drive()
+
+    localStorage.setItem('hasTakenTour', 'true')
+  }
 
 
   useEffect(() => {
@@ -265,6 +291,8 @@ function App() {
         })
     }
   }
+
+
 
   return (
     <>

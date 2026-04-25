@@ -288,3 +288,7 @@ dialog[open] {
     -ms-transform: translateX(-50%) translateY(-50%);
   }
 }
+
+.driver-popover.tour-dialog {
+  font-family: 'Fira Code', monospace;
+}

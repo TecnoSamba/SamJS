@@ -84,7 +84,7 @@ function Save(props) {
 
     return (
         <>
-            <button id='packageSearch' className='hint--bottom-left hint--bounce hint--rounded tool-button button' aria-label='Code snippets' disabled={!userId} onClick={() => setDialogOpen(dialogOpen ? false : true)} style={theme === 'dark' ? { 'color': 'white' } : { 'color': 'black' }}>
+            <button id='codeSnippets' className='hint--bottom-left hint--bounce hint--rounded tool-button button' aria-label='Code snippets' disabled={!userId} onClick={() => setDialogOpen(dialogOpen ? false : true)} style={theme === 'dark' ? { 'color': 'white' } : { 'color': 'black' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="12px" fill="CURRENTCOLOR"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" /></svg>
             </button>
             <dialog open={dialogOpen} style={theme === 'dark' ? { '--background': '#09090b', '--color': 'white', '--border': '#151517' } : { '--background': 'white', '--color': 'black', '--border': 'black' }} className='ui-dialog'>
