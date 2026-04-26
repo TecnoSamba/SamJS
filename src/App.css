@@ -28,6 +28,7 @@ main {
   grid-template-rows: 1fr;
   --bg: light-dark(white, #09090b);
   --border: light-dark(black, #8e8e8e);
+  --color: light-dark(black, white);
 }
 
 textarea {
@@ -43,6 +44,26 @@ textarea {
 textarea:active,
 textarea:focus {
   outline: 0;
+}
+
+.log-box {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.log-box-buttons {
+  opacity: 0;
+  transition: opacity .25s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.log-box:hover {
+  .log-box-buttons {
+    opacity: 1;
+  }
 }
 
 #log {

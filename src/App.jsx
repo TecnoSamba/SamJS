@@ -1,6 +1,6 @@
 import './App.css'
 import './hint.css'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import JsRunner from '/src/jsRunner.js?worker'
 import { EditorView } from '@codemirror/view'
 import { basicSetup } from 'codemirror'
@@ -16,6 +16,8 @@ import { libraryTooltip } from './components/libraryTooltip'
 import { lightTheme, darkTheme } from './CONSTANTS'
 import { driver } from "driver.js"
 import "driver.js/dist/driver.css"
+import Log from './components/Log'
+import { ThemeContext } from './ThemeContext'
 
 function App() {
   const githubLight = githubLightInit()
@@ -24,7 +26,7 @@ function App() {
   const runner = useRef(null)
   const [code, setCode] = useState(localStorage.getItem('code') || 'console.log("Hello, world!")')
   const [log, setLog] = useState([])
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+  const { theme, setTheme } = useContext(ThemeContext)
   const [editorTheme, setEditorTheme] = useState(theme === 'dark' ? dracula : githubLight)
   const [stylesTheme] = useState(theme === 'dark' ? EditorView.theme(darkTheme) : EditorView.theme(lightTheme))
   const [copyToolTip, setCopyToolTip] = useState('Copy shareable link')
@@ -68,16 +70,16 @@ function App() {
         setLog([])
       }
       if (e.data.type === 'log') {
-        setLog(log => [...log, <br />, <span className='log'>{e.data.content.split('')[0] === '{' ? e.data.content : `'${e.data.content}'`}</span>])
+        setLog(log => [...log, <br />, <Log type='log' code={editor.current.state.doc.toString()} content={e.data.content.split('')[0] === '{' ? e.data.content : `'${e.data.content}'`} />])
       }
       if (e.data.type === 'error') {
-        setLog(log => [...log, <br />, <span className='error'>❌ {e.data.content}</span>])
+        setLog(log => [...log, <br />, <Log type='error' code={editor.current.state.doc.toString()} content={`❌ ${e.data.content}`}/>])
       }
       if (e.data.type === 'warning') {
-        setLog(log => [...log, <br />, <span className='warn'>⚠️ {e.data.content}</span>])
+        setLog(log => [...log, <br />, <Log type='warn' code={editor.current.state.doc.toString()} content={`⚠️ ${e.data.content}`} />])
       }
       if (e.data.type === 'info') {
-        setLog(log => [...log, <br />, <span className='info'>ℹ️ {e.data.content}</span>])
+        setLog(log => [...log, <br />, <Log type='info' code={editor.current.state.doc.toString()} content={`ℹ️ ${e.data.content}`} />])
       }
     }
     runner.current.onmessage = e => messageHandler(e)
