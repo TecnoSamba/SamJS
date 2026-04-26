@@ -201,11 +201,8 @@ function App() {
           <Auth />
         </div>
       </header>
-      <main >
+      <main style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>
         <div id='editor' ref={editorDiv} style={theme === 'dark' ? { '--border': '#8e8e8e' } : { '--border': 'black' }}>
-          <aside className='tabs'>
-
-          </aside>
         </div>
         <div id='log' style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>{log}</div>
       </main>
