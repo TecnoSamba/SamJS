@@ -18,9 +18,6 @@ import { driver } from "driver.js"
 import "driver.js/dist/driver.css"
 
 function App() {
-
-  
-
   const githubLight = githubLightInit()
   let isShared = false
 
@@ -203,7 +200,11 @@ function App() {
         </div>
       </header>
       <main >
-        <div id='editor' ref={editorDiv} style={theme === 'dark' ? { '--border': '#8e8e8e' } : { '--border': 'black' }} />
+        <div id='editor' ref={editorDiv} style={theme === 'dark' ? { '--border': '#8e8e8e' } : { '--border': 'black' }}>
+          <aside className='tabs'>
+
+          </aside>
+        </div>
         <div id='log' style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>{log}</div>
       </main>
       <dialog open={dialogOpen} style={theme === 'dark' ? { '--background': '#09090b', '--color': 'white', '--border': '#151517' } : { '--background': 'white', '--color': 'black', '--border': 'black' }} className='ui-dialog'>
