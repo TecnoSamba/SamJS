@@ -1,6 +1,6 @@
 ![SamJS](icon.png)
 
-# [SamJS](https://samjs.vercel.app)
+# [SamJS](https://samjs.dev)
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Tecnosamba21/SamJS)
 
