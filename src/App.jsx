@@ -38,6 +38,7 @@ function App() {
   const stylesCompartment = useRef(new Compartment).current
   const isSharedRef = useRef(isShared)
   const [hasTakenTour] = useState(localStorage.getItem('hasTakenTour') == 'true' || false)
+  const [isSharedCodeSaved, setIsSharedCodeSaved] = useState(true)
 
   const mainPageDriver = driver({
     showProgress: true,
@@ -73,7 +74,7 @@ function App() {
         setLog(log => [...log, <br />, <Log type='log' code={editor.current.state.doc.toString()} content={e.data.content.split('')[0] === '{' ? e.data.content : `'${e.data.content}'`} />])
       }
       if (e.data.type === 'error') {
-        setLog(log => [...log, <br />, <Log type='error' code={editor.current.state.doc.toString()} content={`❌ ${e.data.content}`}/>])
+        setLog(log => [...log, <br />, <Log type='error' code={editor.current.state.doc.toString()} content={`❌ ${e.data.content}`} />])
       }
       if (e.data.type === 'warning') {
         setLog(log => [...log, <br />, <Log type='warn' code={editor.current.state.doc.toString()} content={`⚠️ ${e.data.content}`} />])
@@ -99,7 +100,11 @@ function App() {
         setLog([])
         const currentCode = update.state.doc.toString()
         setCode(currentCode)
-        localStorage.setItem('code', currentCode)
+        if (!isSharedRef.current) {
+          localStorage.setItem('code', currentCode)
+        } else {
+          setIsSharedCodeSaved(false)
+        }
         runner.current.postMessage(currentCode)
       }
     })
@@ -123,6 +128,7 @@ function App() {
       editor.current?.dispatch({
         changes: { from: 0, to: editor.current.state.doc.length, insert: decoded }
       })
+      window.history.replaceState(null, '', window.location.origin + window.location.pathname)
     }
   }, [])
 
@@ -204,7 +210,19 @@ function App() {
       <main style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>
         <div id='editor' ref={editorDiv} style={theme === 'dark' ? { '--border': '#8e8e8e' } : { '--border': 'black' }}>
         </div>
-        <div id='log' style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>{log}</div>
+        <div id='log' style={theme === 'dark' ? { backgroundColor: '#09090b' } : { backgroundColor: 'white' }}>
+          {log}
+          <button 
+          className={`saveButton ${!isSharedCodeSaved ? 'appear' : 'hide'}`}
+          onClick={() => {
+            localStorage.setItem('code', code)
+            setIsSharedCodeSaved(true)
+          }}
+          >
+            <div><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="currentcolor"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM565-275q35-35 35-85t-35-85q-35-35-85-35t-85 35q-35 35-35 85t35 85q35 35 85 35t85-35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z" /></svg></div>
+            <span>Save shared code</span>
+          </button>
+        </div>
       </main>
       <dialog open={dialogOpen} style={theme === 'dark' ? { '--background': '#09090b', '--color': 'white', '--border': '#151517' } : { '--background': 'white', '--color': 'black', '--border': 'black' }} className='ui-dialog'>
         <h1>Search a package 📦</h1>
