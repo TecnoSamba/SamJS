@@ -161,13 +161,13 @@ When pressed, you will see a dialog where you can change your account settings:
 ## Save code snippets
 
 > [!NOTE]
-> You must be **logged in** in order yo use this function, otherwise the access button will be disabled. Also keep in mind that there is a limit of four snippets per account for ensuring everybody to have free space for their snippets.
+> You must be **logged in** in order to use this function, otherwise the access button will be disabled. Also keep in mind that there is a limit of four snippets per account for ensuring everybody to have free space for their snippets.
 
 Press the *code snippets* button and then *Save current code* for saving the code of the editor as a snippet.
 
 ![Code snippets](./CodeSnippetsSave.png)
 
-When it is uploaded a `section` will appear with the first line of the saved code:
+Once it is uploaded, a `section` will appear with the first line of the saved code:
 
 ![When saved](./CodeSnippetsSaved.png)
 
