@@ -46,7 +46,7 @@ function Save(props) {
                 setDialogOpen(false)
             }}>{item.code.split('\n')[0]}</span>
                 <div className='buttons snippet-buttons'>
-                    <button className='tool-button button hint--bottom-left hint--bounce hint--rounded' aria-label='Add to code' style={theme === 'dark' ? { color: 'white' } : { color: 'black' }} onClick={
+                    <button className='tool-button button' aria-label='Add to code' style={theme === 'dark' ? { color: 'white' } : { color: 'black' }} onClick={
                         async () => {
                             editor.current.dispatch({
                                 changes: {
@@ -58,7 +58,7 @@ function Save(props) {
                     }>
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="CURRENTCOLOR"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" /></svg>
                     </button>
-                    <button className='tool-button button hint--bottom-left hint--bounce hint--rounded' aria-label='Remove snippet' onClick={
+                    <button className='tool-button button' aria-label='Remove snippet' onClick={
                         async () => {
                             await supabase.from('code').delete().eq('id', item.id)
                             getSnippets()
