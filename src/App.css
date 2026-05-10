@@ -101,6 +101,11 @@ textarea:focus {
   text-shadow: rgba(150, 255, 94, 0.595) 0 0 20px;
 }
 
+.number {
+  color: orange;
+  text-shadow: rgb(213, 152, 38) 0 0 20px;
+}
+
 .warn {
   color: rgb(218, 218, 61);
   text-shadow: rgba(250, 255, 94, 0.595) 0 0 20px;
