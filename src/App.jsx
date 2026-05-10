@@ -71,7 +71,11 @@ function App() {
         setLog([])
       }
       if (e.data.type === 'log') {
-        setLog(log => [...log, <br />, <Log type='log' code={editor.current.state.doc.toString()} content={e.data.content.split('')[0] === '{' ? e.data.content : `'${e.data.content}'`} />])
+        if (!isNaN(e.data.content)) {
+          setLog(log => [...log, <br />, <Log type='number' code={editor.current.state.doc.toString()} content={e.data.content} />])
+        } else {
+          setLog(log => [...log, <br />, <Log type='log' code={editor.current.state.doc.toString()} content={e.data.content.split('')[0] === '{' ? e.data.content : `'${e.data.content}'`} />])
+        }
       }
       if (e.data.type === 'error') {
         setLog(log => [...log, <br />, <Log type='error' code={editor.current.state.doc.toString()} content={`❌ ${e.data.content}`} />])

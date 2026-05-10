@@ -14,6 +14,7 @@ function extractVariables(code) {
     const varRegex = /\b(?:let|const|var)\s+([a-zA-Z_$][\w$]*)/g
     const funcParamRegex = /function\s+[a-zA-Z_$][\w$]*\s*\(([^)]*)\)/g
     const arrowFuncParamRegex = /\(([^)]*)\)\s*=>/g
+    const desestructuratedVariablesRegex = /[[{,]\s*([a-zA-Z_$][\w$]*)\s*(?=[:=\],}])/g
 
     const extractedVariables = new Set()
     let match
@@ -34,6 +35,10 @@ function extractVariables(code) {
         for (const param of params) {
             extractedVariables.add(param)
         }
+    }
+
+    while ((match = desestructuratedVariablesRegex.exec(code)) !== null) {
+        extractedVariables.add(match[1])
     }
 
     return Array.from(extractedVariables)
