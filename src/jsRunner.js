@@ -43,7 +43,13 @@ onmessage = e => {
                     const packageModule = await import(packageUrl)
                     if (packageModule['default'] == null) return packageModule
                     return packageModule.default
-                } catch(err) { postMessage({content: err.toString(), type: 'error'}) }
+                } catch(err) { 
+                    if (err.toString().includes('TypeError: The URL must be of scheme file')) {
+                        postMessage({content: 'This package appears to depend of internal node APIs, which SamJS does not support, please run this package inside of a node environment or swap it with a compatible one.', type: 'error'})
+                    } else {
+                        postMessage({content: err.toString(), type: 'error'})
+                    }
+                }
             }
             const __$__userCode = async () => {
                 ${e.data}
