@@ -248,6 +248,7 @@ dialog .close,
   gap: 8px;
   max-height: 350px;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .ui-dialog[open] section {
