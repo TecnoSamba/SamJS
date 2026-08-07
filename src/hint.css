@@ -62,8 +62,8 @@
     border: 6px solid transparent;
     z-index: 1000001; }
   [class*="hint--"]:after {
-    background: #383838;
-    color: white;
+    background: whitesmoke;
+    color: black;
     padding: 8px 10px;
     font-size: 12px;
     font-family: 'Fira Code';
@@ -94,28 +94,28 @@
  * set default color for tooltip arrows
  */
 .hint--top-left:before {
-  border-top-color: #383838; }
+  border-top-color: whitesmoke; }
 
 .hint--top-right:before {
-  border-top-color: #383838; }
+  border-top-color: whitesmoke; }
 
 .hint--top:before {
-  border-top-color: #383838; }
+  border-top-color: whitesmoke; }
 
 .hint--bottom-left:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: whitesmoke; }
 
 .hint--bottom-right:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: whitesmoke; }
 
 .hint--bottom:before {
-  border-bottom-color: #383838; }
+  border-bottom-color: whitesmoke; }
 
 .hint--left:before {
-  border-left-color: #383838; }
+  border-left-color: whitesmoke; }
 
 .hint--right:before {
-  border-right-color: #383838; }
+  border-right-color: whitesmoke; }
 
 /**
  * top tooltip
@@ -384,7 +384,6 @@
 	 * tooltip body
 	 */ }
   [class*="hint--"]:after {
-    text-shadow: 0 -1px 0px black;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); }
 
 /**
