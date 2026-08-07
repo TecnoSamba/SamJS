@@ -414,3 +414,53 @@ dialog[open] {
   animation: saveButtonDisappear 0.3s forwards;
   pointer-events: none;
 }
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 20px;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0px 0px 20px yellow;
+  }
+}
+
+@keyframes glowOut {
+  from {
+    box-shadow: 0px 0px 20px yellow;;
+  }
+  to {
+    box-shadow: none;
+  }
+}
+
+.starBadge {
+  background-color: white;
+  color: black;
+  font-size: 1.5ch;
+  font-weight: bold;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 5px;
+  border-radius: 9999999999999px;
+
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.starBadge:hover {
+  animation: glow .25s ease;
+  animation-fill-mode: forwards;
+}
+
+.starBadge:not(:hover) {
+  animation: glowOut .5s ease;
+  animation-fill-mode: forwards;
+}

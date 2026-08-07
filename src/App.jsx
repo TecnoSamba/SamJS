@@ -18,6 +18,7 @@ import { driver } from "driver.js"
 import "driver.js/dist/driver.css"
 import Log from './components/Log'
 import { ThemeContext } from './ThemeContext'
+import Stars from './components/Stars'
 
 function App() {
   const githubLight = githubLightInit()
@@ -202,7 +203,10 @@ function App() {
   return (
     <>
       <header style={theme === 'dark' ? { backgroundColor: '#09090b', borderBottom: '1.5px solid #8e8e8e' } : { backgroundColor: 'white', borderBottom: '1.5px solid black', color: 'black' }}>
-        <h1 style={{ color: '#38b6ff' }}>Sam<span style={{ color: 'yellow' }}>JS</span></h1>
+        <div className='titleContainer'>
+          <h1 style={{ color: '#38b6ff' }}>Sam<span style={{ color: 'yellow' }}>JS</span></h1>
+          <Stars />
+        </div>
         <div className="buttons">
           <Save theme={theme} code={code} editor={editor} />
           <button id='packageSearch' className='hint--bottom-left hint--bounce hint--rounded tool-button button' aria-label='Search packages' onClick={() => dialogOpen ? setDialogOpen(false) : setDialogOpen(true)} style={theme === 'dark' ? { color: 'white' } : { color: 'black' }}><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="CURRENTCOLOR"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-80 92L160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11Zm200-528 77-44-237-137-78 45 238 136Zm-160 93 78-45-237-137-78 45 237 137Z" /></svg></button>
